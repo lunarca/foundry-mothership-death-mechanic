@@ -1,0 +1,54 @@
+{
+  "MDM": {
+    "Seal": "SEAL",
+    "SealVerified": "Seal {code} verified: this result was fixed when they went down.",
+    "SealBroken": "Seal {code} does not match: this result was changed after sealing.",
+    "Window": {
+      "Title": "Death Save: {name}",
+      "Sealed": "Their fate is sealed. Nobody has seen it.",
+      "Revealed": "Someone checked on them.",
+      "Hidden": "Hidden result",
+      "Hint": "The dice have already fallen. Check on them to find out.",
+      "Check": "Check on them",
+      "AskGM": "Ask to check on them"
+    },
+    "Chat": {
+      "SealedTitle": "Death Save sealed",
+      "SealedBody": "{name} is down. Their Death Save has been rolled and sealed, unseen by anyone.",
+      "Open": "Open",
+      "RevealedTitle": "{name}'s Death Save"
+    },
+    "Verify": {
+      "Title": "Check on them?",
+      "Body": "{user} wants to check on {name}. Reveal the sealed Death Save to everyone now?"
+    },
+    "Discard": {
+      "Title": "Discard sealed Death Save",
+      "Body": "Throw away {name}'s sealed Death Save without revealing it? Nobody will ever see the result."
+    },
+    "Notify": {
+      "NeedGM": "A GM must be connected to seal or reveal a Death Save.",
+      "AskedGM": "Asked the GM to let you check on them.",
+      "Denied": "The GM says not yet: {name}'s fate stays sealed.",
+      "NoActor": "Select a token or assign a character first.",
+      "NothingSealed": "{name} has no sealed Death Save."
+    },
+    "Error": {
+      "NoTable": "Could not find the Mothership 1e Death Save table. Check the MoSh system's roll table settings."
+    },
+    "Settings": {
+      "AutoSeal": {
+        "Name": "Seal automatically at max Wounds",
+        "Hint": "Roll and seal a Death Save as soon as a character's Wounds reach their maximum. Turn off to seal only by macro."
+      },
+      "GMVerify": {
+        "Name": "GM verify before reveal",
+        "Hint": "A player's \"Check on them\" click becomes a request the GM must approve, so an accidental click can't spoil the moment."
+      },
+      "ShowDice": {
+        "Name": "Roll Dice So Nice dice on reveal",
+        "Hint": "When a sealed Death Save is revealed, show the stored roll with Dice So Nice, if it is installed."
+      }
+    }
+  }
+}
