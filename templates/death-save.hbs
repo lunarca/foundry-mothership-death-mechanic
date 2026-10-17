@@ -1,0 +1,41 @@
+<section class="mdm-body {{#if revealed}}mdm-body--revealed{{/if}} {{#if animate}}mdm-animate{{/if}}">
+  <header class="mdm-header">
+    <img class="mdm-portrait" src="{{img}}" alt="{{name}}">
+    <div>
+      <h2>{{name}}</h2>
+      <p class="mdm-subtitle">{{#if revealed}}{{localize "MDM.Window.Revealed"}}{{else}}{{localize "MDM.Window.Sealed"}}{{/if}}</p>
+    </div>
+  </header>
+
+  <div class="mdm-envelope">
+    {{#if revealed}}
+      <p class="mdm-roll">{{formula}} = <strong>{{total}}</strong></p>
+      {{#each results}}
+        <div class="mdm-result">{{{html}}}</div>
+      {{/each}}
+    {{else}}
+      <div class="mdm-redacted" aria-label="{{localize 'MDM.Window.Hidden'}}">
+        {{#each redactions}}<span class="mdm-bar" style="width: {{this}}%"></span>{{/each}}
+      </div>
+      <p class="mdm-hint">{{localize "MDM.Window.Hint"}}</p>
+    {{/if}}
+  </div>
+
+  <p class="mdm-seal-code">
+    {{#if revealed}}
+      {{#if verified}}<i class="fa-solid fa-check"></i> {{localize "MDM.SealVerified" code=seal.code}}
+      {{else}}<i class="fa-solid fa-triangle-exclamation"></i> {{localize "MDM.SealBroken" code=seal.code}}{{/if}}
+    {{else}}
+      <i class="fa-solid fa-lock"></i> {{localize "MDM.Seal"}} {{seal.code}}
+    {{/if}}
+  </p>
+
+  {{#if sealed}}
+    <footer class="mdm-actions">
+      <button type="button" data-action="check"><i class="fa-solid fa-hand"></i> {{checkLabel}}</button>
+      {{#if isGM}}
+        <button type="button" class="mdm-discard" data-action="discard" data-tooltip="{{localize 'MDM.Discard.Title'}}"><i class="fa-solid fa-trash"></i></button>
+      {{/if}}
+    </footer>
+  {{/if}}
+</section>

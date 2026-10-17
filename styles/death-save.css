@@ -1,0 +1,113 @@
+.mdm-death-save .window-content {
+  padding: 0;
+}
+
+.mdm-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1rem;
+}
+
+.mdm-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.mdm-header h2 {
+  margin: 0;
+  border: none;
+}
+
+.mdm-portrait {
+  width: 64px;
+  height: 64px;
+  object-fit: cover;
+  border: 1px solid var(--color-border, #555);
+  border-radius: 4px;
+  filter: grayscale(0.6);
+}
+
+.mdm-subtitle,
+.mdm-hint {
+  margin: 0;
+  opacity: 0.75;
+  font-style: italic;
+}
+
+.mdm-envelope {
+  min-height: 7rem;
+  padding: 0.75rem;
+  border: 1px dashed var(--color-border, #555);
+  border-radius: 4px;
+}
+
+.mdm-redacted {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.mdm-bar {
+  display: block;
+  height: 0.9rem;
+  background: currentColor;
+  opacity: 0.85;
+  border-radius: 2px;
+}
+
+.mdm-roll {
+  margin: 0 0 0.5rem;
+  font-size: 1.1em;
+}
+
+.mdm-seal-code {
+  margin: 0;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.85em;
+  letter-spacing: 0.05em;
+  opacity: 0.8;
+}
+
+.mdm-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.mdm-actions [data-action="check"] {
+  flex: 1;
+}
+
+.mdm-actions .mdm-discard {
+  flex: 0 0 2.5rem;
+}
+
+/* The reveal: the envelope fades in from a blur on every screen at once. */
+.mdm-animate .mdm-envelope {
+  animation: mdm-reveal 2.4s ease-out both;
+}
+
+.mdm-animate .mdm-portrait {
+  animation: mdm-portrait 2.4s ease-out both;
+}
+
+@keyframes mdm-reveal {
+  0% { filter: blur(12px); opacity: 0; }
+  40% { filter: blur(8px); opacity: 0.4; }
+  100% { filter: blur(0); opacity: 1; }
+}
+
+@keyframes mdm-portrait {
+  0% { filter: grayscale(0.6) brightness(0.4); }
+  100% { filter: grayscale(0.6) brightness(1); }
+}
+
+.mdm-chat .mdm-seal-code {
+  margin-top: 0.5rem;
+}
+
+.mdm-chat button {
+  margin-top: 0.5rem;
+}
