@@ -7,9 +7,9 @@ The roll is fixed the moment the character goes down. Checking on them only find
 ## How it plays
 
 1. **A character hits max Wounds.** This works however the Wounds change: the system's damage rolls, another module's damage helper, or a hand edit on the sheet. The active GM's client rolls the system's 1e *Death Save* table in memory. Nothing goes to chat, no dice are shown, and the result is stored obscured on the actor.
-2. **Everyone sees the sealed window.** Every connected player and the GM get a pop-up with the character's portrait, a redacted result and a seal code such as `SEAL 463E-D722`. A chat card records the seal too. Players who join later see the window when they connect.
+2. **Everyone sees the sealed window.** Every connected player and the GM get a pop-up with the character's portrait and a redacted result. A chat card records the seal too. Players who join later see the window when they connect.
 3. **Someone checks on them.** Anyone can press **Check on them**, in the window or with a macro. With **GM verify before reveal** on, a player's press becomes a request the GM approves or denies.
-4. **The reveal.** The window un-blurs on every screen, Dice So Nice rolls the stored dice if it's installed, and a public chat card shows the result. It also confirms the seal code still matches, which proves the result wasn't changed after sealing.
+4. **The reveal.** The window un-blurs on every screen and a public chat card shows the result.
 
 A GM can discard a sealed save without revealing it with the trash button in the window, for example after a mistaken Wound.
 
@@ -19,7 +19,6 @@ A GM can discard a sealed save without revealing it with the trash button in the
 | --- | --- | --- | --- |
 | Seal automatically at max Wounds | World | On | Turn off to seal only by macro. |
 | GM verify before reveal | World | Off | A player's reveal becomes a request the GM must approve. |
-| Roll Dice So Nice dice on reveal | Per user | On | Shows the stored roll when it's revealed. |
 
 ## Macros
 
@@ -36,7 +35,7 @@ Each call also takes an actor or actor UUID, for example `api.reveal(game.actors
 
 ## How hidden is hidden?
 
-No screen shows the result before the reveal, but this isn't cryptographic secrecy. Foundry gives the GM's browser all world data, so a GM who goes digging in the developer console could decode it. The seal code (a SHA-256 fingerprint of the result) makes tampering visible at the reveal.
+No screen shows the result before the reveal, but this isn't cryptographic secrecy. Foundry gives the GM's browser all world data, so a GM who goes digging in the developer console could decode it. Behind the scenes the module still stores a SHA-256 fingerprint of the result and checks it at the reveal; a mismatch is logged to the console.
 
 ## Requirements
 

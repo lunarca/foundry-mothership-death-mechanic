@@ -81,7 +81,7 @@ export async function sealDeathSave(actor) {
     await actor.setFlag(MODULE_ID, FLAG, seal);
     await ChatMessage.create({
       speaker: ChatMessage.getSpeaker({ actor }),
-      content: sealedCardHtml(actor, seal),
+      content: sealedCardHtml(actor),
       flags: { [MODULE_ID]: { actorUuid: actor.uuid } }
     });
     return seal;
@@ -101,6 +101,7 @@ export async function revealDeathSave(actor, requestedBy = game.user.id) {
   const plaintext = unobscure(seal.payload, seal.nonce);
   const verified = sealCode(seal.nonce, plaintext) === seal.code;
   const result = JSON.parse(plaintext);
+  if (!verified) console.warn(`${MODULE_ID} | ${actor.name}'s Death Save no longer matches its seal code`);
   await actor.setFlag(MODULE_ID, FLAG, {
     revealed: true,
     verified,
@@ -110,7 +111,7 @@ export async function revealDeathSave(actor, requestedBy = game.user.id) {
   });
   await ChatMessage.create({
     speaker: ChatMessage.getSpeaker({ actor }),
-    content: revealedCardHtml(actor, seal, result, verified),
+    content: revealedCardHtml(actor, result),
     flags: { [MODULE_ID]: { actorUuid: actor.uuid } }
   });
 }
@@ -179,26 +180,21 @@ export async function onSocketMessage(message) {
   return revealDeathSave(actor, message.userId);
 }
 
-function sealedCardHtml(actor, seal) {
+function sealedCardHtml(actor) {
   const name = Handlebars.escapeExpression(actor.name);
   return `<div class="mdm-chat mdm-chat--sealed">
     <h3><i class="fa-solid fa-envelope"></i> ${localize("Chat.SealedTitle")}</h3>
     <p>${localize("Chat.SealedBody", { name })}</p>
-    <p class="mdm-seal-code">${localize("Seal")} ${seal.code}</p>
     <button type="button" data-mdm-open="${actor.uuid}"><i class="fa-solid fa-eye-slash"></i> ${localize("Chat.Open")}</button>
   </div>`;
 }
 
-function revealedCardHtml(actor, seal, result, verified) {
+function revealedCardHtml(actor, result) {
   const name = Handlebars.escapeExpression(actor.name);
   const outcome = result.results.map(r => `<div class="mdm-result">${r.description || Handlebars.escapeExpression(r.name)}</div>`).join("");
-  const check = verified
-    ? `<i class="fa-solid fa-check"></i> ${localize("SealVerified", { code: seal.code })}`
-    : `<i class="fa-solid fa-triangle-exclamation"></i> ${localize("SealBroken", { code: seal.code })}`;
   return `<div class="mdm-chat mdm-chat--revealed">
     <h3><i class="fa-solid fa-skull"></i> ${localize("Chat.RevealedTitle", { name })}</h3>
     <p class="mdm-roll">${result.formula} = <strong>${result.total}</strong></p>
     ${outcome}
-    <p class="mdm-seal-code">${check}</p>
   </div>`;
 }

@@ -1,20 +1,16 @@
 {
   "MDM": {
-    "Seal": "SEAL",
-    "SealVerified": "Seal {code} verified: this result was fixed when they went down.",
-    "SealBroken": "Seal {code} does not match: this result was changed after sealing.",
     "Window": {
       "Title": "Death Save: {name}",
-      "Sealed": "Their fate is sealed. Nobody has seen it.",
+      "Sealed": "Their fate is sealed.",
       "Revealed": "Someone checked on them.",
       "Hidden": "Hidden result",
-      "Hint": "The dice have already fallen. Check on them to find out.",
       "Check": "Check on them",
       "AskGM": "Ask to check on them"
     },
     "Chat": {
       "SealedTitle": "Death Save sealed",
-      "SealedBody": "{name} is down. Their Death Save has been rolled and sealed, unseen by anyone.",
+      "SealedBody": "{name} is down. Their Death Save is sealed.",
       "Open": "Open",
       "RevealedTitle": "{name}'s Death Save"
     },
@@ -44,10 +40,6 @@
       "GMVerify": {
         "Name": "GM verify before reveal",
         "Hint": "A player's \"Check on them\" click becomes a request the GM must approve, so an accidental click can't spoil the moment."
-      },
-      "ShowDice": {
-        "Name": "Roll Dice So Nice dice on reveal",
-        "Hint": "When a sealed Death Save is revealed, show the stored roll with Dice So Nice, if it is installed."
       }
     }
   }

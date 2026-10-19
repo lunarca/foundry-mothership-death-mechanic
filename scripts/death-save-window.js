@@ -27,7 +27,7 @@ export class DeathSaveWindow extends HandlebarsApplicationMixin(ApplicationV2) {
     body: { template: `modules/${MODULE_ID}/templates/death-save.hbs` }
   };
 
-  /** Set for the one render that should play the reveal animation and dice. */
+  /** Set for the one render that should play the reveal animation. */
   #playReveal = false;
 
   constructor(actor, options = {}) {
@@ -75,7 +75,6 @@ export class DeathSaveWindow extends HandlebarsApplicationMixin(ApplicationV2) {
     if (context.revealed) {
       context.total = seal.result.total;
       context.formula = seal.result.formula;
-      context.verified = seal.verified;
       context.results = await Promise.all(seal.result.results.map(async r => ({
         name: r.name,
         html: await enrich(r.description || r.name)
@@ -86,12 +85,7 @@ export class DeathSaveWindow extends HandlebarsApplicationMixin(ApplicationV2) {
 
   async _onRender(context, options) {
     await super._onRender(context, options);
-    if (!this.#playReveal) return;
     this.#playReveal = false;
-    const seal = getSeal(this.actor);
-    if (game.dice3d && game.settings.get(MODULE_ID, SETTINGS.showDice) && seal?.result?.roll) {
-      game.dice3d.showForRoll(Roll.fromData(seal.result.roll), game.user, false);
-    }
   }
 
   static async onCheck() {

@@ -4,8 +4,7 @@ export const FLAG = "seal";
 
 export const SETTINGS = {
   autoSeal: "autoSeal",
-  gmVerify: "gmVerify",
-  showDice: "showDice"
+  gmVerify: "gmVerify"
 };
 
 export function localize(key, data) {

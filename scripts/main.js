@@ -29,14 +29,6 @@ Hooks.once("init", () => {
     type: Boolean,
     default: false
   });
-  game.settings.register(MODULE_ID, SETTINGS.showDice, {
-    name: "MDM.Settings.ShowDice.Name",
-    hint: "MDM.Settings.ShowDice.Hint",
-    scope: "client",
-    config: true,
-    type: Boolean,
-    default: true
-  });
 });
 
 Hooks.once("ready", () => {
