@@ -29,8 +29,7 @@
   filter: grayscale(0.6);
 }
 
-.mdm-subtitle,
-.mdm-hint {
+.mdm-subtitle {
   margin: 0;
   opacity: 0.75;
   font-style: italic;
@@ -61,14 +60,6 @@
 .mdm-roll {
   margin: 0 0 0.5rem;
   font-size: 1.1em;
-}
-
-.mdm-seal-code {
-  margin: 0;
-  font-family: var(--font-mono, monospace);
-  font-size: 0.85em;
-  letter-spacing: 0.05em;
-  opacity: 0.8;
 }
 
 .mdm-actions {
@@ -102,10 +93,6 @@
 @keyframes mdm-portrait {
   0% { filter: grayscale(0.6) brightness(0.4); }
   100% { filter: grayscale(0.6) brightness(1); }
-}
-
-.mdm-chat .mdm-seal-code {
-  margin-top: 0.5rem;
 }
 
 .mdm-chat button {

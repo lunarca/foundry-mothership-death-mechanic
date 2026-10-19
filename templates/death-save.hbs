@@ -17,18 +17,8 @@
       <div class="mdm-redacted" aria-label="{{localize 'MDM.Window.Hidden'}}">
         {{#each redactions}}<span class="mdm-bar" style="width: {{this}}%"></span>{{/each}}
       </div>
-      <p class="mdm-hint">{{localize "MDM.Window.Hint"}}</p>
     {{/if}}
   </div>
-
-  <p class="mdm-seal-code">
-    {{#if revealed}}
-      {{#if verified}}<i class="fa-solid fa-check"></i> {{localize "MDM.SealVerified" code=seal.code}}
-      {{else}}<i class="fa-solid fa-triangle-exclamation"></i> {{localize "MDM.SealBroken" code=seal.code}}{{/if}}
-    {{else}}
-      <i class="fa-solid fa-lock"></i> {{localize "MDM.Seal"}} {{seal.code}}
-    {{/if}}
-  </p>
 
   {{#if sealed}}
     <footer class="mdm-actions">

@@ -2,7 +2,7 @@
   "id": "mothership-death-mechanic",
   "title": "Mothership Sealed Death Save",
   "description": "Rolls the Mothership 1e Death Save the moment a character reaches maximum Wounds and seals it, hidden from players and GM alike, until someone checks on them.",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "authors": [
     {
       "name": "Alex",
